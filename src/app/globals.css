@@ -1,26 +1,135 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  ---color-cerulean-blue-50: #f1f4fd;
+  --color-cerulean-blue-100: #e0e7f9;
+  --color-cerulean-blue-200: #c7d5f6;
+  --color-cerulean-blue-300: #a1baef;
+  --color-cerulean-blue-400: #7496e6;
+  --color-cerulean-blue-500: #5372de;
+  --color-cerulean-blue-600: #4259d2;
+  --color-cerulean-blue-700: #3544c0;
+  --color-cerulean-blue-800: #313a9c;
+  --color-cerulean-blue-900: #2c347c;
+  --color-cerulean-blue-950: #1f224c;
+
+  --color-white-lilac: #fafaff;
+  --color-alabaster: #fafafa;
+  --color-concrete: #f2f2f4;
+
+  --color-mercury: #e6e7ea;
+  --color-iron: #d8dade;
+
+  --color-amazon-50: #eefbf5;
+  --color-amazon-100: #d6f5e4;
+  --color-amazon-200: #b0eace;
+  --color-amazon-300: #7dd8b2;
+  --color-amazon-400: #47c091;
+  --color-amazon-500: #24a577;
+  --color-amazon-600: #16815d;
+  --color-amazon-700: #126a4f;
+  --color-amazon-800: #11543f;
+  --color-amazon-900: #0f4535;
+  --color-amazon-950: #07271f;
+
+  --color-brick-red-50: #fdf4f3;
+  --color-brick-red-100: #fbeae8;
+  --color-brick-red-200: #f7d5d4;
+  --color-brick-red-300: #f0b3b1;
+  --color-brick-red-400: #e78685;
+  --color-brick-red-500: #da595b;
+  --color-brick-red-600: #c53942;
+  --color-brick-red-700: #a52b36;
+  --color-brick-red-800: #8b2632;
+  --color-brick-red-900: #772431;
+  --color-brick-red-950: #420f15;
+
+  --color-reno-sand-50: #fefce8;
+  --color-reno-sand-100: #fdf8c4;
+  --color-reno-sand-200: #fcee8c;
+  --color-reno-sand-300: #fadc4a;
+  --color-reno-sand-400: #f6c819;
+  --color-reno-sand-500: #e6af0c;
+  --color-reno-sand-600: #c78707;
+  --color-reno-sand-700: #a8660a;
+  --color-reno-sand-800: #834c10;
+  --color-reno-sand-900: #6f3e14;
+  --color-reno-sand-950: #412007;
+
+  --color-bunker: #17181b;
+  --color-shuttle-gray: #676b74;
+  --color-mountain-mist: #90949d;
+
+  /*Semantic aliases*/
+  --color-primary: var(--color-cerulean-blue-600);
+  --color-primary-subtle: var(--color-cerulean-blue-50);
+
+  --color-background: var(--color-white-lilac);
+  --color-background-secondary: var(--color-alabaster);
+  --color-background-tertiary: var(--color-concrete);
+
+  --color-border: var(--color-mercury);
+  --color-border-secondary: var(--color-iron);
+
+  --color-success: var(--color-amazon-600);
+  --color-success-subtle: var(--color-amazon-50);
+
+  --color-danger: var(--color-brick-red-600);
+  --color-danger-subtle: var(--color-brick-red-50);
+
+  --color-warning: var(--color-reno-sand-600);
+  --color-warning-subtle: var(--color-reno-sand-50);
+
+  --color-text: var(--color-bunker);
+  --color-text-secondary: var(--color-shuttle-gray);
+  --color-text-muted: var(--color-mountain-mist);
+
+  --color-icon: var(--color-bunker);
+  --color-icon-secondary: var(--color-shuttle-gray);
+  --color-icon-muted: var(--color-mountain-mist);
+
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --font-inter: "inter", sans-serif;
+
+  --text-caption: 0.65rem;
+  --text-body-xs: 0.8rem;
+  --text-body-sm: 0.9rem;
+  --text-body-md: 1rem;
+  --text-body-lg: 1.25rem;
+  --text-body-xl: 1.5rem;
+  --text-body-2xl: 1.75rem;
+
+  /* Headings */
+  --text-heading-sm: 1.125rem;
+  --text-heading-sm--font-weight: 600;
+
+  --text-heading-md: 1.5rem;
+  --text-heading-md--font-weight: 600;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    font-family: var(--font-inter);
+    font-size: var(--text-body-md);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-inter);
+    line-height: 1.2;
+    font-weight: 600;
+  }
 }
