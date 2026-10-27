@@ -1,9 +1,17 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+
 @custom-variant dark (&:is(.dark *));
 
+/* =========================================================
+   1. PRIMITIVE TOKENS
+   Fixed palette, typography, radius and text-size scales.
+   These are the building blocks of the design system.
+   ========================================================= */
+
 @theme {
+  /* Brand palette */
   --color-cerulean-blue-50: #f1f4fd;
   --color-cerulean-blue-100: #e0e7f9;
   --color-cerulean-blue-200: #c7d5f6;
@@ -16,13 +24,17 @@
   --color-cerulean-blue-900: #2c347c;
   --color-cerulean-blue-950: #1f224c;
 
+  /* Neutral palette */
   --color-white-lilac: #fafaff;
   --color-alabaster: #fafafa;
   --color-concrete: #f2f2f4;
-
   --color-mercury: #e6e7ea;
   --color-iron: #d8dade;
+  --color-bunker: #17181b;
+  --color-shuttle-gray: #676b74;
+  --color-mountain-mist: #90949d;
 
+  /* Success palette */
   --color-amazon-50: #eefbf5;
   --color-amazon-100: #d6f5e4;
   --color-amazon-200: #b0eace;
@@ -35,6 +47,7 @@
   --color-amazon-900: #0f4535;
   --color-amazon-950: #07271f;
 
+  /* Danger palette */
   --color-brick-red-50: #fdf4f3;
   --color-brick-red-100: #fbeae8;
   --color-brick-red-200: #f7d5d4;
@@ -47,6 +60,7 @@
   --color-brick-red-900: #772431;
   --color-brick-red-950: #420f15;
 
+  /* Warning palette */
   --color-reno-sand-50: #fefce8;
   --color-reno-sand-100: #fdf8c4;
   --color-reno-sand-200: #fcee8c;
@@ -59,45 +73,16 @@
   --color-reno-sand-900: #6f3e14;
   --color-reno-sand-950: #412007;
 
-  --color-bunker: #17181b;
-  --color-shuttle-gray: #676b74;
-  --color-mountain-mist: #90949d;
-
-  /*Semantic aliases*/
-  --color-primary: var(--color-cerulean-blue-600);
-  --color-primary-subtle: var(--color-cerulean-blue-50);
-
-  --color-background: var(--color-white-lilac);
-  --color-background-secondary: var(--color-alabaster);
-  --color-background-tertiary: var(--color-concrete);
-
-  --color-border: var(--color-mercury);
-  --color-border-secondary: var(--color-iron);
-
-  --color-success: var(--color-amazon-600);
-  --color-success-subtle: var(--color-amazon-50);
-
-  --color-danger: var(--color-brick-red-600);
-  --color-danger-subtle: var(--color-brick-red-50);
-
-  --color-warning: var(--color-reno-sand-600);
-  --color-warning-subtle: var(--color-reno-sand-50);
-
-  --color-text: var(--color-bunker);
-  --color-text-secondary: var(--color-shuttle-gray);
-  --color-text-muted: var(--color-mountain-mist);
-
-  --color-icon: var(--color-bunker);
-  --color-icon-secondary: var(--color-shuttle-gray);
-  --color-icon-muted: var(--color-mountain-mist);
-
+  /* Radius scale */
   --radius-xs: 6px;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
 
-  --font-inter: "inter", sans-serif;
+  /* Font family */
+  --font-inter: "Inter", sans-serif;
 
+  /* Body text scale */
   --text-caption: 0.65rem;
   --text-body-xs: 0.8rem;
   --text-body-sm: 0.9rem;
@@ -106,7 +91,7 @@
   --text-body-xl: 1.5rem;
   --text-body-2xl: 1.75rem;
 
-  /* Headings */
+  /* Heading scale */
   --text-heading-sm: 1.125rem;
   --text-heading-sm--font-weight: 600;
 
@@ -114,38 +99,171 @@
   --text-heading-md--font-weight: 600;
 }
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    font-family: var(--font-inter);
-    font-size: var(--text-body-md);
-    background-color: var(--color-background);
-    color: var(--color-text);
-    line-height: 1.5;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-inter);
-    line-height: 1.2;
-    font-weight: 600;
-  }
-  * {
-    @apply border-border outline-ring/50;
-  }
+/* =========================================================
+   2. SEMANTIC TOKENS — LIGHT THEME
+   These answer: "What role does this value play?"
+   ========================================================= */
+
+:root {
+  color-scheme: light;
+
+  /* Core surfaces and text */
+  --background: var(--color-white-lilac);
+  --foreground: var(--color-bunker);
+
+  --card: var(--color-alabaster);
+  --card-foreground: var(--color-bunker);
+
+  --popover: var(--color-white-lilac);
+  --popover-foreground: var(--color-bunker);
+
+  /* Actions and interactive elements */
+  --primary: var(--color-cerulean-blue-600);
+  --primary-subtle: var(--color-cerulean-blue-50);
+  --primary-hover: var(--color-cerulean-blue-700);
+  --primary-foreground: #ffffff;
+
+  --secondary: var(--color-alabaster);
+  --secondary-foreground: var(--color-bunker);
+
+  --muted: var(--color-concrete);
+  --muted-foreground: var(--color-shuttle-gray);
+
+  --accent: var(--color-concrete);
+  --accent-foreground: var(--color-bunker);
+
+  --destructive: var(--color-brick-red-600);
+
+  /* Borders and focus */
+  --border: var(--color-mercury);
+  --input: var(--color-mercury);
+  --ring: var(--color-cerulean-blue-600);
+
+  /* Extended surface roles */
+  --background-secondary: var(--color-alabaster);
+  --background-tertiary: var(--color-concrete);
+
+  --border-secondary: var(--color-iron);
+
+  /* Extended text and icon roles */
+  --text-secondary: var(--color-shuttle-gray);
+  --text-muted: var(--color-mountain-mist);
+
+  --icon: var(--color-bunker);
+  --icon-secondary: var(--color-shuttle-gray);
+  --icon-muted: var(--color-mountain-mist);
+
+  /* Feedback roles */
+  --success: var(--color-amazon-600);
+  --success-subtle: var(--color-amazon-50);
+
+  --danger: var(--color-brick-red-600);
+  --danger-subtle: var(--color-brick-red-50);
+
+  --warning: var(--color-reno-sand-600);
+  --warning-subtle: var(--color-reno-sand-50);
+
+  /* Sidebar */
+  --sidebar: var(--color-alabaster);
+  --sidebar-foreground: var(--color-bunker);
+  --sidebar-primary: var(--color-cerulean-blue-600);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--color-concrete);
+  --sidebar-accent-foreground: var(--color-bunker);
+  --sidebar-border: var(--color-mercury);
+  --sidebar-ring: var(--color-cerulean-blue-600);
+
+  /* Charts */
+  --chart-1: var(--color-cerulean-blue-600);
+  --chart-2: var(--color-amazon-600);
+  --chart-3: var(--color-reno-sand-600);
+  --chart-4: var(--color-brick-red-600);
+  --chart-5: var(--color-shuttle-gray);
 }
 
-@theme inline {
-  /* Fonts */
-  --font-heading: var(--font-inter);
-  --font-sans: var(--font-inter);
+/* =========================================================
+   3. SEMANTIC TOKENS — DARK THEME
+   Same roles, different values.
+   ========================================================= */
 
-  /* Shadcn semantic colors */
+.dark {
+  color-scheme: dark;
+
+  --background: #111215;
+  --foreground: #f1f2f4;
+
+  --card: #191b1f;
+  --card-foreground: #f1f2f4;
+
+  --popover: #111215;
+  --popover-foreground: #f1f2f4;
+
+  --primary: #677bef;
+  --primary-foreground: #ffffff;
+
+  --secondary: #191b1f;
+  --secondary-foreground: #f1f2f4;
+
+  --muted: #141518;
+  --muted-foreground: #a3a7b0;
+
+  --accent: #141518;
+  --accent-foreground: #f1f2f4;
+
+  --destructive: #e78685;
+
+  --border: #383c44;
+  --input: #383c44;
+  --ring: #7c8df0;
+
+  --background-secondary: #191b1f;
+  --background-tertiary: #141518;
+
+  --border-secondary: #383c44;
+
+  --text-secondary: #a3a7b0;
+  --text-muted: #90949d;
+
+  --icon: #f1f2f4;
+  --icon-secondary: #a3a7b0;
+  --icon-muted: #90949d;
+
+  --success: #47c091;
+  --success-subtle: #07271f;
+
+  --danger: #e78685;
+  --danger-subtle: #420f15;
+
+  --warning: #f6c819;
+  --warning-subtle: #412007;
+
+  --sidebar: #191b1f;
+  --sidebar-foreground: #f1f2f4;
+  --sidebar-primary: #7c8df0;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #141518;
+  --sidebar-accent-foreground: #f1f2f4;
+  --sidebar-border: #383c44;
+  --sidebar-ring: #7c8df0;
+
+  --chart-1: #7c8df0;
+  --chart-2: #47c091;
+  --chart-3: #f6c819;
+  --chart-4: #e78685;
+  --chart-5: #a3a7b0;
+}
+
+/* =========================================================
+   4. TAILWIND MAPPINGS
+   Expose semantic CSS variables as Tailwind utilities.
+   ========================================================= */
+
+@theme inline {
+  /* Typography */
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-inter);
+
+  /* Core shadcn colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -156,6 +274,8 @@
   --color-popover-foreground: var(--popover-foreground);
 
   --color-primary: var(--primary);
+  --color-primary-subtle: var(--primary-subtle);
+  --color-primary-hover: var(--primary-hover);
   --color-primary-foreground: var(--primary-foreground);
 
   --color-secondary: var(--secondary);
@@ -173,7 +293,32 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Optional shadcn tokens */
+  /* Extended surfaces */
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+
+  --color-border-secondary: var(--border-secondary);
+
+  /* Extended text and icon colors */
+  --color-text: var(--foreground);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-icon: var(--icon);
+  --color-icon-secondary: var(--icon-secondary);
+  --color-icon-muted: var(--icon-muted);
+
+  /* Feedback */
+  --color-success: var(--success);
+  --color-success-subtle: var(--success-subtle);
+
+  --color-danger: var(--danger);
+  --color-danger-subtle: var(--danger-subtle);
+
+  --color-warning: var(--warning);
+  --color-warning-subtle: var(--warning-subtle);
+
+  /* Sidebar */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -183,6 +328,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  /* Charts */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -190,79 +336,36 @@
   --color-chart-5: var(--chart-5);
 }
 
-:root {
-  /* Core shadcn semantic tokens */
-  --background: var(--color-background);
-  --foreground: var(--color-text);
+/* =========================================================
+   5. GLOBAL BASE STYLES
+   Defaults for HTML elements, not design-token definitions.
+   ========================================================= */
 
-  --card: var(--color-background-secondary);
-  --card-foreground: var(--color-text);
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-  --popover: var(--color-background);
-  --popover-foreground: var(--color-text);
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-body-md);
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: 1.5;
+  }
 
-  --primary: var(--color-primary);
-  --primary-foreground: #ffffff;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+    font-weight: 600;
+  }
 
-  --secondary: var(--color-background-secondary);
-  --secondary-foreground: var(--color-text);
-
-  --muted: var(--color-background-tertiary);
-  --muted-foreground: var(--color-text-secondary);
-
-  --accent: var(--color-background-tertiary);
-  --accent-foreground: var(--color-text);
-
-  --destructive: var(--color-danger);
-
-  --border: var(--color-border);
-  --input: var(--color-border);
-  --ring: var(--color-primary);
-
-  /* Sidebar */
-  --sidebar: var(--color-background-secondary);
-  --sidebar-foreground: var(--color-text);
-  --sidebar-primary: var(--color-primary);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: var(--color-background-tertiary);
-  --sidebar-accent-foreground: var(--color-text);
-  --sidebar-border: var(--color-border);
-  --sidebar-ring: var(--color-primary);
-
-  /* Charts */
-  --chart-1: var(--color-primary);
-  --chart-2: var(--color-success);
-  --chart-3: var(--color-warning);
-  --chart-4: var(--color-danger);
-  --chart-5: var(--color-text-secondary);
-}
-
-/*---break---*/
-.dark {
-  --background: #111215;
-  --foreground: #f1f2f4;
-  --card: #191b1f;
-  --card-foreground: #f1f2f4;
-  --popover: #111215;
-  --popover-foreground: #f1f2f4;
-  --primary: #7c8df0;
-  --primary-foreground: #ffffff;
-  --secondary: #191b1f;
-  --secondary-foreground: #f1f2f4;
-  --muted: #141518;
-  --muted-foreground: #a3a7b0;
-  --accent: #141518;
-  --accent-foreground: #f1f2f4;
-  --border: #383c44;
-  --input: #383c44;
-  --ring: #7c8df0;
-
-  --sidebar: #191b1f;
-  --sidebar-foreground: #f1f2f4;
-  --sidebar-primary: #7c8df0;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #141518;
-  --sidebar-accent-foreground: #f1f2f4;
-  --sidebar-border: #383c44;
-  --sidebar-ring: #7c8df0;
+  * {
+    @apply border-border outline-ring/50;
+  }
 }
